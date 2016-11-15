@@ -57,7 +57,7 @@ if(intval($responseKeys["success"]) !== 1) {
 
             // set up replacements for decorator plugin
             $replacements = [
-                'aldeiajerome@gmail.com' =>
+                'rubem.barros@primeconsulting.org' =>
                     ['#subject#' => 'Hotel Aldeia Jerome Reservation Request',
                         '#greeting#' => "Thanks $name, your booking request was received!"],
                 $email =>
