@@ -11,6 +11,7 @@ if(!$captcha){
         </script>";
   exit;
 }
+
 $secretKey = "6LdfWgsUAAAAAOIS0S1dinM4ECfV5wv2RFAkHuMR";
 $ip = $_SERVER['REMOTE_ADDR'];
 $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha."&remoteip=".$ip);
@@ -21,8 +22,10 @@ if(intval($responseKeys["success"]) !== 1) {
             location='index.html';
         </script>";
   exit;
-}else{
-    if((include "/data/customers/projetos.prime.cv/httpdocs/bookingodoo/reservaodoo.php") == 0){
+}
+
+else{
+    if((include "/data/customers/projetos.prime.cv/httpdocs/bookingodoo_teste/reservaodoo.php") == 0){
         $expected = ['arrival_date', 'departure_date', 'num_rooms','num_adults','num_children','room_type','name','surname','email','doc_num', 'telephone', 'address','origin_country','nationality','travel_motive','info','number_extra_bed','site'];
         $required = ['arrival_date', 'departure_date', 'num_rooms','num_adults','name','surname','email','doc_num', 'telephone', 'address'];
 
@@ -88,28 +91,28 @@ if(intval($responseKeys["success"]) !== 1) {
 
         // create the first part of the HTML output
         $html = <<<EOT
-<html lang="en">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Hotel Aldeia Jerome</title>
-</head>
-<body bgcolor="#EBEBEB" link="#B64926" vlink="#FFB03B">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
-<tr>
-<td>
-<table width="600" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-<tr><td style='text-align:center; background-color: grey'><img src='$image_logo'></td></tr>
-<tr>
-<td style="padding-top: 0.5em">
-<h1 style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #0E618C; text-align:
-center">Avalia&ccedil;&atilde;o do Hotel Aldeia Jerome</h1>
-</td>
-</tr>
-<tr>
-<td style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #1B1B1B; font-size: 14px; padding: 1em">
-<p>#greeting#</p>
-<ul>
-EOT;
+		<html lang="en">
+		<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Hotel Aldeia Jerome</title>
+		</head>
+		<body bgcolor="#EBEBEB" link="#B64926" vlink="#FFB03B">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
+		<tr>
+		<td>
+		<table width="600" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+		<tr><td style='text-align:center; background-color: grey'><img src='$image_logo'></td></tr>
+		<tr>
+		<td style="padding-top: 0.5em">
+		<h1 style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #0E618C; text-align:
+		center">Avalia&ccedil;&atilde;o do Hotel Aldeia Jerome</h1>
+		</td>
+		</tr>
+		<tr>
+		<td style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #1B1B1B; font-size: 14px; padding: 1em">
+		<p>#greeting#</p>
+		<ul>
+		EOT;
 
                 // initialize variable for plain text version
                 $text = '';
@@ -174,10 +177,9 @@ EOT;
                 echo $e->getMessage();
             }
         }
-    }else{
+    }}else{
         echo "<script type='text/javascript'>
                    alert('A sua reserva não pude ser feita!');
                    location='index.html';
               </script>";
-    }
-}
+    }}
