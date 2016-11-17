@@ -89,30 +89,30 @@ else{
                 $image_ilha = $message->embed(Swift_Image::fromPath('img/santoantao.png'));
                 $image_logo = $message->embed(Swift_Image::fromPath('img/logo.png'));
 
-        // create the first part of the HTML output
-        $html = <<<EOT
-		<html lang="en">
-		<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<title>Hotel Aldeia Jerome</title>
-		</head>
-		<body bgcolor="#EBEBEB" link="#B64926" vlink="#FFB03B">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
-		<tr>
-		<td>
-		<table width="600" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-		<tr><td style='text-align:center; background-color: grey'><img src='$image_logo'></td></tr>
-		<tr>
-		<td style="padding-top: 0.5em">
-		<h1 style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #0E618C; text-align:
-		center">Avalia&ccedil;&atilde;o do Hotel Aldeia Jerome</h1>
-		</td>
-		</tr>
-		<tr>
-		<td style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #1B1B1B; font-size: 14px; padding: 1em">
-		<p>#greeting#</p>
-		<ul>
-		EOT;
+// create the first part of the HTML output
+$html = <<<EOT
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Hotel Aldeia Jerome</title>
+</head>
+<body bgcolor="#EBEBEB" link="#B64926" vlink="#FFB03B">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
+<tr>
+<td>
+<table width="600" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+<tr><td style='text-align:center; background-color: grey'><img src='$image_logo'></td></tr>
+<tr>
+<td style="padding-top: 0.5em">
+<h1 style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #0E618C; text-align:
+center">Avalia&ccedil;&atilde;o do Hotel Aldeia Jerome</h1>
+</td>
+</tr>
+<tr>
+<td style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; color: #1B1B1B; font-size: 14px; padding: 1em">
+<p>#greeting#</p>
+<ul>
+EOT;
 
                 // initialize variable for plain text version
                 $text = '';
