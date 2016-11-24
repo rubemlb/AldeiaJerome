@@ -22,10 +22,8 @@ if(intval($responseKeys["success"]) !== 1) {
             location='index.html';
         </script>";
   exit;
-}
-
-else{
-    if((include "/data/customers/projetos.prime.cv/httpdocs/bookingodoo_teste/reservaodoo.php") == 0){
+}else{
+    if((include "/data/customers/projetos.prime.cv/httpdocs/bookingodoo/reservaodoo.php") == 0){
         $expected = ['arrival_date', 'departure_date', 'num_rooms','num_adults','num_children','room_type','name','surname','email','doc_num', 'telephone', 'address','origin_country','nationality','travel_motive','info','number_extra_bed','site'];
         $required = ['arrival_date', 'departure_date', 'num_rooms','num_adults','name','surname','email','doc_num', 'telephone', 'address'];
 
@@ -60,7 +58,7 @@ else{
 
             // set up replacements for decorator plugin
             $replacements = [
-                'rubem.barros@primeconsulting.org' =>
+                'aldeiajerome@gmail.com' =>
                     ['#subject#' => 'Hotel Aldeia Jerome Reservation Request',
                         '#greeting#' => "Thanks $name, your booking request was received!"],
                 $email =>
@@ -183,3 +181,6 @@ EOT;
                    location='index.html';
               </script>";
     }}
+
+
+    
