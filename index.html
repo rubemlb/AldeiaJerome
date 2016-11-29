@@ -10,7 +10,7 @@
     <title>Aldeia Jerome B&B</title>
 
     <!-- meta helder--> 
-        <meta name="description" content="Aldeia Jerome B&B | Want to visit paradise? Cape Verde is your destination, so come visit our islands. Situated in the coust of Africa, come on enjoy the sun and the fun! Travel to the perfect destination of tourism. Booking in hotels are always available.">
+    <meta name="description" content="Aldeia Jerome B&B | Want to visit paradise? Cape Verde is your destination, so come visit our islands. Situated in the coust of Africa, come on enjoy the sun and the fun! Travel to the perfect destination of tourism. Booking in hotels are always available.">
     <!-- end meta helder-->
     
     <!-- favicon -->
@@ -30,7 +30,7 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <!-- Google ReCaptcha -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
@@ -200,7 +200,7 @@
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group">
-                                <a href="index.html#booking" id="booking_reservar" class="btn btn-primary btn-lg" onclick="reserv()"> Pesquisar <span class="glyphicon glyphicon-ok" ></span></a>
+                                <a href="#booking" id="booking_reservar" class="btn btn-primary btn-lg" onclick="reserv()"> Pesquisar <span class="glyphicon glyphicon-ok" ></span></a>
                             </div>
                         </div>
                     </form>
@@ -715,7 +715,7 @@
                         <input type="hidden" id="site" name="site" value="http://www.aldeiajerome.cv">
                         <label for="data_chegada" class="col-sm-2 control-label" style="text-align: left">Data Chegada <span style="color: #CC0000">*</span></label>
                         <div class="col-sm-3">
-                          <input type="date" class="form-control" id="arrival_date" name="arrival_date" placeholder="Data Chegada" required="required">
+                          <input type="text" class="form-control" id="arrival_date" name="arrival_date" placeholder="Data Chegada" required="required">
                         </div>
                       </div>
 
@@ -723,7 +723,7 @@
                       <div class="form-group">
                         <label for="data_partida" class="col-sm-2 control-label" style="text-align: left">Data Partida <span style="color: #CC0000">*</span></label>
                         <div class="col-sm-3">
-                          <input type="date" class="form-control" id="departure_date" name="departure_date" placeholder="Data Partida" required="required">
+                          <input type="text" class="form-control" id="departure_date" name="departure_date" placeholder="Data Partida" required="required">
                         </div>
                       </div>
 
@@ -1386,11 +1386,11 @@
                         </div>
                     </div>
 
-                      <div class="form-group">
+                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" name="submit" class="btn btn-primary">Reservar</button>
                         </div>
-                      </div>
+                    </div>
 
                     </form>
                 </div>
@@ -1507,6 +1507,7 @@
 
     <script src='star/jquery.MetaData.js' type="text/javascript"></script>
     <script src='star/jquery.rating.js' type="text/javascript"></script>
+    <script src='js/jquery-ui.js' type="text/javascript"></script>
 
     <!-- Google Translate -->
     <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -1566,6 +1567,43 @@
       ga('send', 'pageview');
     </script>
     <!-- end google analytics -->
+
+    <!-- no data under -->
+    <script>
+       var dateToday = new Date();
+       var dates = $("#arrival_date,#departure_date").datepicker({
+           /*changeMonth: true,
+           numberOfMonths: 1,*/
+           minDate: dateToday,
+           onSelect: function(selectedDate) {
+               var option = this.id == "arrival_date" ? "minDate" : "maxDate",
+                   instance = $(this).data("datepicker"),
+                   date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+               dates.not(this).datepicker("option", option, date);
+           }
+       });
+       var dates1 = $("#data_chegada,#data_partida").datepicker({
+           /*changeMonth: true,
+           numberOfMonths: 1,*/
+           minDate: dateToday,
+           onSelect: function(selectedDate) {
+               var option = this.id == "data_chegada" ? "minDate" : "maxDate",
+                   instance = $(this).data("datepicker"),
+                   date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+               dates1.not(this).datepicker("option", option, date);
+           }
+       });
+   </script>
+   <!---start-date-piker---->
+   <script>
+       $(function() {
+           $( "#data_chegada,#data_partida,#arrival_date,#departure_date" ).datepicker({
+               dateFormat: "dd-mm-yy"
+           });
+       });
+   </script>
+<!---/End-date-piker---->
+
 
 </body>
 
