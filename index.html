@@ -156,12 +156,12 @@
                     <form>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg" id="data_chegada" name="data_chegada" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Check-in">
+                                <input type="text" class="form-control input-lg" id="data_chegada" name="data_chegada"  placeholder="Check-in">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg" id="data_partida" name="data_partida" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Check-out" >
+                                <input type="text" class="form-control input-lg" id="data_partida" name="data_partida" placeholder="Check-out" >
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
@@ -1568,32 +1568,27 @@
     </script>
     <!-- end google analytics -->
 
-    <!-- no data under -->
-    <script>
-       var dateToday = new Date();
-       var dates = $("#arrival_date,#departure_date").datepicker({
-           /*changeMonth: true,
-           numberOfMonths: 1,*/
-           minDate: dateToday,
-           onSelect: function(selectedDate) {
-               var option = this.id == "arrival_date" ? "minDate" : "maxDate",
-                   instance = $(this).data("datepicker"),
-                   date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
-               dates.not(this).datepicker("option", option, date);
-           }
-       });
-       var dates1 = $("#data_chegada,#data_partida").datepicker({
-           /*changeMonth: true,
-           numberOfMonths: 1,*/
-           minDate: dateToday,
-           onSelect: function(selectedDate) {
-               var option = this.id == "data_chegada" ? "minDate" : "maxDate",
-                   instance = $(this).data("datepicker"),
-                   date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
-               dates1.not(this).datepicker("option", option, date);
-           }
-       });
-   </script>
+    <!-- no data under and plus -->
+	<script>
+		$("#data_chegada,#arrival_date").datepicker({
+		    minDate: 0,
+		    onSelect: function(dateText, inst) {
+		       var actualDate = new Date(dateText);
+		       var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+1);
+		        $('#data_partida,#departure_date').datepicker('option', 'minDate', newDate );
+		    }
+		});
+
+			$("#data_partida,departure_date").datepicker({
+		    minDate: 1,
+		    onSelect: function(dateText, inst) {
+		       var actualDate = new Date(dateText);
+		       var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate());
+		        $('#data_partida,#departure_date').datepicker('option', 'minDate', newDate );
+		    }
+		});
+			
+		</script>
    <!---start-date-piker---->
    <script>
        $(function() {
